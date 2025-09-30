@@ -259,10 +259,6 @@ waitress-serve --listen=0.0.0.0:5000 app:app
       <br>
       <em>Demonstrating Core Features & Help System</em>
     </td>
-    <td align="center">
-      <br>
-
-
   </tr>
 </table>
 
@@ -313,39 +309,28 @@ waitress-serve --listen=0.0.0.0:5000 app:app
   <tr>
     <td align="center">
       <img src="static/addik.jpg" alt="Addik Restaurant" width="100%">
-      <br>
-      <em>Addik Restaurant Interface</em>
     </td>
     <td align="center">
       <img src="static/latium.jpg" alt="Latium Restaurant" width="100%">
-      <br>
-      <em>Latium Restaurant Display</em>
     </td>
     <td align="center">
       <img src="static/da.jpg" alt="Restaurant Dashboard" width="100%">
-      <br>
-    
-
+    </td>
   </tr>
   <tr>
     <td align="center">
       <img src="static/do.jpg" alt="Chatbot Interface" width="100%">
-      <br>
-      <em></em>
     </td>
     <td align="center">
       <img src="static/df.jpg" alt="Reservation System" width="100%">
-      <br>
-      <em>
     </td>
     <td align="center">
       <img src="static/test.jpg" alt="Testing Interface" width="100%">
-      <br>
-     
-
+    </td>
   </tr>
 </table>
 
+</div>
 
 ---
 
