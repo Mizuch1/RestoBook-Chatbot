@@ -259,11 +259,6 @@ waitress-serve --listen=0.0.0.0:5000 app:app
       <br>
       <em>Demonstrating Core Features & Help System</em>
     </td>
-    <td align="center">
-      <img src="static/16.png" alt="Restaurant Selection" width="100%">
-      <br>
-      <em>Restaurant Selection Interface</em>
-    </td>
   </tr>
 </table>
 
@@ -313,14 +308,14 @@ waitress-serve --listen=0.0.0.0:5000 app:app
 <table>
   <tr>
     <td align="center">
-      <img src="static/addik.jpg" alt="Addik Restaurant" width="100%">
+      <img src="static/RestoBook Chatbot Main Interface.png" alt="Main Interface" width="100%">
       <br>
-      <em>Addik Restaurant Interface</em>
+      <em>Main Application Interface</em>
     </td>
     <td align="center">
-      <img src="static/latium.jpg" alt="Latium Restaurant" width="100%">
+      <img src="static/Demonstrating Core Features Help Request.png" alt="Core Features" width="100%">
       <br>
-      <em>Latium Restaurant Display</em>
+      <em>Core Features Demonstration</em>
     </td>
     <td align="center">
       <img src="static/da.jpg" alt="Restaurant Dashboard" width="100%">
@@ -351,17 +346,15 @@ waitress-serve --listen=0.0.0.0:5000 app:app
 
 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 20px 0;">
 
-<img src="static/19.png" alt="Mobile View 1" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+<img src="static/RestoBook Chatbot Main Interface.png" alt="Desktop Interface" style="width: 30%; min-width: 300px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
 
-<img src="static/22.png" alt="Mobile View 2" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+<img src="static/Demonstrating Core Features Help Request.png" alt="Feature Demo" style="width: 30%; min-width: 300px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
 
-<img src="static/23.png" alt="Mobile View 3" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
-
-<img src="static/29.png" alt="Mobile View 4" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+<img src="static/Menu Example Latium Restaurant (Italian Cuisine).jpg" alt="Menu Display" style="width: 30%; min-width: 300px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
 
 </div>
 
-<p><em>Responsive layouts showcasing mobile compatibility across different screen sizes and devices</em></p>
+<p><em>Responsive layouts showcasing desktop and mobile compatibility across different screen sizes and devices</em></p>
 
 </div>
 
