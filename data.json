@@ -1,0 +1,61 @@
+{"intents": [
+        {"tag": "deef",
+         "patterns": [""],
+         "responses": ["Desole mais je n'ai pas compris ce que tu dis"],
+         "context": [""]
+        },
+        {"tag": "hello",
+         "patterns": ["salut", "hi", "bonjour","Hey","Hola", "Hello", "bonsoir"],
+         "responses": ["Salut ! Comment puis-je t'aider aujourd'hui "],
+         "context": [""]
+        },
+        {"tag": "bye",
+         "patterns": ["Bye", "See ya", "Goodbye"],
+         "responses": ["Au revoir"],
+         "context": [""]
+        },
+        {"tag": "reserver",
+         "patterns": ["reserver"],
+         "responses": ["Cliquez sur le bouton pour reserver"],
+         "context": [""]
+        },
+        {"tag": "annuler",
+         "patterns": ["annuler"],
+         "responses": ["Cliquez sur le bouton pour annuler la reservation"],
+         "context": [""]
+        },
+        {"tag": "menu",
+         "patterns": ["menu"],
+         "responses": ["Cliquez sur les boutons pour obtenir"],
+         "context": [""]
+        },
+        {"tag": "aider",
+         "patterns": ["aide", "aider", "aidez"],
+         "responses": ["Vous pouvez faire une reservation dans l'un des restaurants inclus dans notre liste \n rambla - la latium - addik \n -Vous pouvez egalement annuler la reservation \n -Vous pouvez commander le menu \n"],
+         "context": [""]
+        },
+        {"tag": "specials",
+        "patterns": ["spécialités", "plat du jour", "recommandation"],
+        "responses": ["Chaque restaurant a ses propres spécialités et plats du jour. Pour connaître les recommandations, veuillez sélectionner le restaurant qui vous intéresse."],
+        "context": [""]
+       },
+       {"tag": "loca",
+        "patterns": ["localisation", "rambla"],
+        "responses": ["c'est la ou se localise rambla"],
+        "context": [""]
+       }
+       ,
+       {"tag": "loca",
+        "patterns": ["localisation", "rambla"],
+        "responses": ["c'est la ou se localise rambla"],
+        "context": [""]
+       },
+       {
+        "tag": "horaire",
+        "patterns": ["horaire", "heures de travail", "travail"],
+        "responses": ["Voici les horaires de travail : \n\n- Lundi - Vendredi : 9h00 - 22h00 \n- Samedi - Dimanche : 9h00 - 23h00"],
+        "context": [""]
+      }
+      
+   ]
+}
