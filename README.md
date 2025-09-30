@@ -243,7 +243,127 @@ waitress-serve --listen=0.0.0.0:5000 app:app
 ---
 
 ## 📸 Screenshots
-soon
+
+<div align="center">
+
+### 🖥️ Main Application Interface
+<table>
+  <tr>
+    <td align="center">
+      <img src="static/RestoBook Chatbot Main Interface.png" alt="RestoBook Main Interface" width="100%">
+      <br>
+      <em>RestoBook Chatbot - Main Application Interface</em>
+    </td>
+    <td align="center">
+      <img src="static/Demonstrating Core Features Help Request.png" alt="Core Features Demo" width="100%">
+      <br>
+      <em>Demonstrating Core Features & Help System</em>
+    </td>
+    <td align="center">
+      <img src="static/16.png" alt="Restaurant Selection" width="100%">
+      <br>
+      <em>Restaurant Selection Interface</em>
+    </td>
+  </tr>
+</table>
+
+### 🍽️ Restaurant Menus & Display
+<table>
+  <tr>
+    <td align="center">
+      <img src="static/Menu Example Latium Restaurant (Italian Cuisine).jpg" alt="Latium Italian Menu" width="100%">
+      <br>
+      <em>Latium Restaurant - Italian Cuisine Menu</em>
+    </td>
+    <td align="center">
+      <img src="static/Menu Example La Rambla Restaurant (Spanish Cuisine).jpg" alt="La Rambla Spanish Menu" width="100%">
+      <br>
+      <em>La Rambla Restaurant - Spanish Cuisine Menu</em>
+    </td>
+    <td align="center">
+      <img src="static/Restaurant Menu Display (Rambla Example).jpg" alt="Restaurant Menu Display" width="100%">
+      <br>
+      <em>Interactive Restaurant Menu Display</em>
+    </td>
+  </tr>
+</table>
+
+### 🤖 Chatbot Features & Interactions
+<table>
+  <tr>
+    <td align="center">
+      <img src="static/Reservation Cancellation Form (Intent 'Annuler').png" alt="Reservation Cancellation" width="100%">
+      <br>
+      <em>Reservation Cancellation Feature</em>
+    </td>
+    <td align="center">
+      <img src="static/Chatbot Providing Map Links.png" alt="Map Integration" width="100%">
+      <br>
+      <em>Google Maps Integration for Restaurant Locations</em>
+    </td>
+    <td align="center">
+      <img src="static/External Integration Google Maps Link (Latium Example).png" alt="External Maps" width="100%">
+      <br>
+      <em>External Maps Integration Example</em>
+    </td>
+  </tr>
+</table>
+
+### 📱 Multi-Restaurant Support & Additional Features
+<table>
+  <tr>
+    <td align="center">
+      <img src="static/addik.jpg" alt="Addik Restaurant" width="100%">
+      <br>
+      <em>Addik Restaurant Interface</em>
+    </td>
+    <td align="center">
+      <img src="static/latium.jpg" alt="Latium Restaurant" width="100%">
+      <br>
+      <em>Latium Restaurant Display</em>
+    </td>
+    <td align="center">
+      <img src="static/da.jpg" alt="Restaurant Dashboard" width="100%">
+      <br>
+      <em>Restaurant Management Dashboard</em>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="static/do.jpg" alt="Chatbot Interface" width="100%">
+      <br>
+      <em>Interactive Chatbot Interface</em>
+    </td>
+    <td align="center">
+      <img src="static/df.jpg" alt="Reservation System" width="100%">
+      <br>
+      <em>Advanced Reservation System</em>
+    </td>
+    <td align="center">
+      <img src="static/test.jpg" alt="Testing Interface" width="100%">
+      <br>
+      <em>System Testing Interface</em>
+    </td>
+  </tr>
+</table>
+
+### 📱 Responsive Design Showcase
+
+<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 20px 0;">
+
+<img src="static/19.png" alt="Mobile View 1" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+
+<img src="static/22.png" alt="Mobile View 2" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+
+<img src="static/23.png" alt="Mobile View 3" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+
+<img src="static/29.png" alt="Mobile View 4" style="width: 22%; min-width: 250px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.15);">
+
+</div>
+
+<p><em>Responsive layouts showcasing mobile compatibility across different screen sizes and devices</em></p>
+
+</div>
 
 ---
 
