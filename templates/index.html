@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  
+
+  <div class="tm-container">
+    <div class="tm-row">
+      <!-- Site Header -->
+      <div class="tm-left">
+        <div class="tm-left-inner">
+          <div class="tm-site-header">
+            <h1 class="tm-site-name">Menu</h1>
+          </div>
+          <nav class="tm-site-nav">
+            <ul class="tm-site-nav-ul">
+              <li class="tm-page-nav-item">
+                <a href="/rambla" class="tm-page-link active" target="_blank">
+                 <span>Rambla</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="/latium" class="tm-page-link" target="_blank">
+                  <span>La latium</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a href="/addik" class="tm-page-link" target="_blank">
+                  <span>la casa carta</span>
+                </a>
+              </li>
+              <li class="tm-page-nav-item">
+                <a class="registration-form">
+                  <span>reserver</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>        
+      </div>
+      <div class="tm-right">
+        <main class="tm-main">
+          <div id="drink" class="tm-page-content">
+        </main>
+      </div>    
+    </div>
+    <footer class="tm-site-footer">
+      <p class="tm-black-bg tm-footer-text">Copyright © 2023 Mizuchi - <a href="https://github.com/Mizuch1" target="_blank">GitHub</a>
+   </footer>
+  </div>
+
+
+
+
+  
+  <div class="mol">
+    <form id="cancelForm">
+      <div class="form-group">
+        <label for="rest">Restaurant:</label>
+        <select name="rest" id="rest">
+          <option value="rambla">Rambla</option>
+          <option value="latium">Latium</option>
+          <option value="addik">la casa carta</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="num">Reservation ID:</label>
+        <input type="number" id="num" name="num" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Cancel Reservation</button>
+      </div>
+    </form>
+  </div>
+  <div id="resultContainer"></div>
+  <div id="msgerChat"></div>
+
+  <script>
+    const cancelForm = document.getElementById('cancelForm');
+    const showFormButton = document.getElementById('showFormButton');
+  
+    cancelForm.style.display = 'none';
+  
+    showFormButton.addEventListener('click', function() {
+      cancelForm.style.display = 'block';
+      showFormButton.style.display = 'none';
+    });
+  
+    const resultContainer = document.getElementById('resultContainer');
+  
+    cancelForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const formData = new FormData(cancelForm);
+  
+      fetch('/annule', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(result => {
+        resultContainer.textContent = result;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        resultContainer.textContent = 'An error occurred during cancellation.';
+      });
+    });
+
+
+
+
+
+    function handleClick(event) {
+      event.preventDefault(); // Prevent form submission from reloading the page
+    
+      // Collect form data
+      const form = event.target;
+      const formData = new FormData(form);
+    
+      // Make an AJAX request to the Flask route
+      fetch('/reserver', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => {
+          // Handle the response from the server
+          if (response.ok) {
+            return response.text(); // Return the reservation ID as the response
+          } else {
+            throw new Error('Reservation submission failed.');
+          }
+        })
+        .then(reservationId => {
+          // Handle the reservation ID on the client side
+          const chatbotMsg = `Reservation ID: ${reservationId}`;
+          appendMessage("ChatBot", "https://image.flaticon.com/icons/svg/327/327779.svg", "left", chatbotMsg);
+          // Optional: Display a success message or perform other actions
+        })
+        .catch(error => {
+          // Handle any network or request error
+          console.error('Error:', error);
+          // Optional: Display an error message or perform other actions
+        });
+    }
+    
+  </script>
+
+
+  <script>
+    var registrationForm = document.getElementById("registrationForm");
+
+    function toggleForm() {
+      if (registrationForm.style.display === "none") {
+        registrationForm.style.display = "block";
+      } else {
+        registrationForm.style.display = "none";
+      }
+    }
+
+    function hideForm() {
+      registrationForm.style.display = "none";
+    }
+  </script>
+
+    
+  <!-- Background video -->
+
+
+
+
+
+  <div class="tm-video-wrapper">
+      <i id="tm-video-control-button" class="fas fa-pause"></i>
+      <video autoplay muted loop id="tm-video">
+          <source src="video/wave-cafe-video-bg.mp4" type="video/mp4">
+      </video>
+  </div>
+
+  <script src="js/jquery-3.4.1.min.js"></script>    
+  <script>
+
+    function setVideoSize() {
+      const vidWidth = 1920;
+      const vidHeight = 1080;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const tempVidWidth = windowHeight * vidWidth / vidHeight;
+      const tempVidHeight = windowWidth * vidHeight / vidWidth;
+      const newVidWidth = tempVidWidth > windowWidth ? tempVidWidth : windowWidth;
+      const newVidHeight = tempVidHeight > windowHeight ? tempVidHeight : windowHeight;
+      const tmVideo = $('#tm-video');
+
+      tmVideo.css('width', newVidWidth);
+      tmVideo.css('height', newVidHeight);
+    }
+
+    function openTab(evt, id) {
+      $('.tm-tab-content').hide();
+      $('#' + id).show();
+      $('.tm-tab-link').removeClass('active');
+      $(evt.currentTarget).addClass('active');
+    }    
+
+    function initPage() {
+      let pageId = location.hash;
+
+      if(pageId) {
+        highlightMenu($(`.tm-page-link[href^="${pageId}"]`)); 
+        showPage($(pageId));
+      }
+      else {
+        pageId = $('.tm-page-link.active').attr('href');
+        showPage($(pageId));
+      }
+    }
+
+    function highlightMenu(menuItem) {
+      $('.tm-page-link').removeClass('active');
+      menuItem.addClass('active');
+    }
+
+    function showPage(page) {
+      $('.tm-page-content').hide();
+      page.show();
+    }
+
+    $(document).ready(function(){
+
+      /***************** Pages *****************/
+
+      initPage();
+
+      $('.tm-page-link').click(function(event) {
+        
+        if(window.innerWidth > 991) {
+          event.preventDefault();
+        }
+
+        highlightMenu($(event.currentTarget));
+        showPage($(event.currentTarget.hash));
+      });
+
+      
+      /***************** Tabs *******************/
+
+      $('.tm-tab-link').on('click', e => {
+        e.preventDefault(); 
+        openTab(e, $(e.target).data('id'));
+      });
+
+      $('.tm-tab-link.active').click(); // Open default tab
+
+
+      /************** Video background *********/
+
+      setVideoSize();
+
+      // Set video background size based on window size
+      let timeout;
+      window.onresize = function(){
+        clearTimeout(timeout);
+        timeout = setTimeout(setVideoSize, 100);
+      };
+
+      // Play/Pause button for video background      
+      const btn = $("#tm-video-control-button");
+
+      btn.on("click", function(e) {
+        const video = document.getElementById("tm-video");
+        $(this).removeClass();
+
+        if (video.paused) {
+          video.play();
+          $(this).addClass("fas fa-pause");
+        } else {
+          video.pause();
+          $(this).addClass("fas fa-play");
+        }
+      });
+    });
+      
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- partial:index.partial.html -->
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        RestoBook
+      </div>
+    </header>
+
+    <main class="msger-chat">
+      <div class="msg left-msg">
+        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">RestoBook</div>
+            <div class="msg-info-time"></div>
+          </div>
+
+          <div class="msg-text">
+            Bienvenue ! Je suis là pour t'aider avec la réservation de restaurant. Que puis-je faire pour toi ? Souhaites-tu réserver une table, annuler une réservation existante ou demander le menu ?
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <form class="msger-inputarea">
+      <input type="text" class="msger-input" id="textInput" placeholder="Enter your message...">
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
+  </section>
+  <!-- partial -->
+  <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
+  <script>
+
+    const msgerForm = get(".msger-inputarea");
+    const msgerInput = get(".msger-input");
+    const msgerChat = get(".msger-chat");
+
+
+    // Icons made by Freepik from www.flaticon.com
+    const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
+    const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+    const BOT_NAME = "    RestoBook";
+    const PERSON_NAME = "You";
+
+    msgerForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const msgText = msgerInput.value;
+      if (!msgText) return;
+
+      appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+      msgerInput.value = "";
+      botResponse(msgText);
+    });
+
+
+    function id(name, img, side, text) {
+      // Simple solution for small apps
+      const msgHTML = `
+        <div class="msg ${side}-msg">
+          <div class="msg-img" style="background-image: url(${img})"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">${name}</div>
+              <div class="msg-info-time">${formatDate(new Date())}</div>
+            </div>
+            <div class="msg-text">${text}</div>
+          </div>
+        </div>
+      `;
+  
+      const msgerChat = document.getElementById('msgerChat');
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    }
+  
+//fonction everey msg 
+    function appendMessage(name, img, side, text) {
+      //   Simple solution for small apps
+      const msgHTML = `
+<div class="msg ${side}-msg">
+  <div class="msg-img" style="background-image: url(${img})"></div>
+
+  <div class="msg-bubble">
+    <div class="msg-info">
+      <div class="msg-info-name">${name}</div>
+      <div class="msg-info-time">${formatDate(new Date())}</div>
+    </div>
+
+    <div class="msg-text">${text}</div>
+  </div>
+</div>
+`;
+
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    }
+    
+// reservation fonction
+    function res(name, img, side, text) {
+      const msgHTML = `
+        <div class="msg ${side}-msg">
+          <div class="msg-img" style="background-image: url(${img})"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">${name}</div>
+              <div class="msg-info-time">${formatDate(new Date())}</div>
+            </div>
+            <div id="reservationIdContainer"></div>
+            <div class="msg-text">${text}</div>
+            <button id="showFormButton" onclick="toggleForm()" class="reserver-button">Reserver </button>
+            <div id="registrationForm" class="registration-form" style="display: none;">
+              <h2>Reserver Now</h2>
+              <form class="myForm" method="POST" onsubmit="handleClick(event)">
+                <div class="form_item">
+                  <select name="rest">
+                    <option value="rambla">Rambla</option>
+                    <option value="latium">Latium</option>
+                    <option value="la_casa_carta">la casa carta</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Nom">
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control" id="num" name="num" placeholder="Numero">
+                </div>
+                <div class="form-group">
+                  <input type="date" class="form-control" id="date" name="date" placeholder="La date de réservation">
+                </div>
+                <div class="form-group">
+                  <input type="time" class="form-control" id="time" name="time" placeholder="L'heure de réservation">
+                </div>
+                <div class="form-group">
+                  <input type="number" class="form-control" id="nbr" name="nbr" placeholder="nombre de place">
+                </div>
+                <div class="d-flex flex-row align-items-center justify-content-between">
+                  <button type="submit" class="btn btn-primary">Continuer</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      `;
+    
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    
+      const showFormButton = document.getElementById("showFormButton");
+      const registrationForm = document.getElementById("registrationForm");
+    
+      showFormButton.addEventListener("click", function () {
+        if (registrationForm.style.display === "none") {
+          registrationForm.style.display = "block";
+          showFormButton.style.display = "none";
+        }
+      });
+    }
+    
+
+
+// menu
+    function menu(name, img, side, text) {
+      // Simple solution for small apps
+      const msgHTML = `
+        <div class="msg ${side}-msg">
+          <div class="msg-img" style="background-image: url(${img})"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">${name}</div>
+              <div class="msg-info-time">${formatDate(new Date())}</div>
+            </div>
+            <div id="reservationIdContainer"></div>
+            <div class="msg-text">${text}</div>
+            <div class="buttons-container">
+              <button class="btn" target="_blank"  onclick="window.location.href='/rambla'" >rambla</button>
+              <button class="btn" target="_blank" onclick="window.location.href='/latium'" >la latium</button>
+              <button class="btn" target="_blank" onclick="window.location.href='/addik'" >la casa carta</button>
+            </div>
+          </div>
+        </div>
+      `;
+    
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    }
+    
+
+
+//localistion
+    function localisation(name, img, side, text) {
+      // Simple solution for small apps
+      const msgHTML = `
+        <div class="msg ${side}-msg">
+          <div class="msg-img" style="background-image: url(${img})"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">${name}</div>
+              <div class="msg-info-time">${formatDate(new Date())}</div>
+            </div>
+            <div id="reservationIdContainer"></div>
+            <div class="msg-text">${text}</div>
+            <div class="buttons-container">
+              <button class="btn" target="_blank" onclick="window.location.href='https://www.google.com/maps/place/Latium/@33.9547368,-6.8652877,15z/data=!4m2!3m1!1s0x0:0xc21d8eb3199cf4f0?sa=X&ved=2ahUKEwjlx_7x3_H_AhVVdqQEHRaHCMkQ_BJ6BAhcEAA&hl=en&ved=2ahUKEwjlx_7x3_H_AhVVdqQEHRaHCMkQ_BJ6BAh0EAg'" target="_blank">la latium</button>
+              <button class="btn" target="_blank" onclick="window.location.href='https://www.google.com/search?newwindow=1&rlz=1C1CHBD_frMA1027MA1027&sxsrf=AB5stBg1FLksKudHbx0fskQFgXRX6J0hrg:1688360123724&q=rambla&npsic=0&rflfq=1&rldoc=1&rllag=33992661,-6838152,1096&tbm=lcl&sa=X&ved=2ahUKEwidu7XL3_H_AhWUWqQEHaFMAUEQtgN6BAgTEAE&biw=1536&bih=722&dpr=1.25#rlfi=hd:;si:17083767776652435103,l,CgZyYW1ibGFIstDjmZ2wgIAIWgwQABgAIgZyYW1ibGGSAQpyZXN0YXVyYW50qgE6EAEqCiIGcmFtYmxhKAAyHhABIhqyc7I43qyfrg-vQj-zraAbNyyu8wRyNn7XojIKEAIiBnJhbWJsYQ;mv:[[34.00862428298727,-6.813760339334603],[33.96827285488837,-6.863799630716438]]'" target="_blank">rambla</button>
+              <button class="btn" target="_blank" onclick="window.location.href='https://www.google.com/maps/place/Addik/@34.0009447,-6.8702164,14z/data=!4m10!1m2!2m1!1saddik+rabat!3m6!1s0xda76c8ec80d99c9:0xf3a094a23c802acb!8m2!3d34.0009439!4d-6.8497701!15sCgthZGRpayByYWJhdJIBCnJlc3RhdXJhbnTgAQA!16s%2Fg%2F11fz9y15qx?hl=en&entry=ttu'" target="_blank">la casa carta</button>
+            </div>
+          </div>
+        </div>
+      `;
+    
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    }
+    function annuler(name, img, side, text) {
+      const msgHTML = `
+        <div class="msg ${side}-msg">
+          <div class="msg-img" style="background-image: url(${img})"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">${name}</div>
+              <div class="msg-info-time">${formatDate(new Date())}</div>
+            </div>
+            <div id="reservationIdContainer"></div>
+            <div class="msg-text">${text}</div>
+            <button id="showFormButton">Annuler</button>
+            <div id="cancelFormContainer" style="display: none;">
+              <div class="mol">
+                <form id="cancelForm" onsubmit="handleCancel(event)">
+                  <div class="form-group">
+                    <label for="rest">Restaurant:</label>
+                    <select name="rest" id="rest">
+                      <option value="rambla">Rambla</option>
+                      <option value="latium">Latium</option>
+                      <option value="la_casa_carta">la casa carta</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="num">Reservation ID:</label>
+                    <input type="number" id="num" name="num" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit">Cancel Reservation</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="resultContainer"></div>
+      `;
+    
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    
+      const showFormButton = document.getElementById("showFormButton");
+      const cancelFormContainer = document.getElementById("cancelFormContainer");
+      const resultContainer = document.getElementById("resultContainer");
+    
+      showFormButton.addEventListener("click", function () {
+        if (cancelFormContainer.style.display === "none") {
+          cancelFormContainer.style.display = "block";
+          resultContainer.style.display = "none";
+          showFormButton.textContent = "Hide Form";
+        } else {
+          cancelFormContainer.style.display = "none";
+          showFormButton.textContent = "Annuler";
+        }
+      });
+    }
+    
+    function handleCancel(event) {
+      event.preventDefault();
+    
+      const form = event.target;
+      const formData = new FormData(form);
+    
+      fetch("/annu", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error occurred while canceling the reservation.");
+          }
+          return response.text();
+        })
+        .then((msg) => {
+          const chatbotMsg = `${msg}`;
+          appendMessage("ChatBot", "https://image.flaticon.com/icons/svg/327/327779.svg", "left", chatbotMsg); // Empty string for chatbot message
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          resultContainer.textContent =
+            "Une erreur s'est produite lors de l'annulation de la réservation.";
+          resultContainer.style.display = "block";
+        });
+    }
+    
+    
+    
+    
+//respanse
+    function botResponse(rawText) {
+
+      // Bot Response
+      $.get("/get", { msg: rawText }).done(function (data) {
+        console.log(rawText);
+        console.log(data);
+        const msgText = data;
+        
+        if(data == "Cliquez sur le bouton pour reserver"){
+          res(BOT_NAME, BOT_IMG, "left", msgText);
+        }
+        else if(data == "Cliquez sur le bouton pour annuler la reservation"){
+          annuler(BOT_NAME, BOT_IMG, "left", msgText);
+        }
+        else if(data == "Cliquez sur les boutons pour obtenir"){
+          menu(BOT_NAME, BOT_IMG, "left", msgText);
+        }
+        else if(data == "c'est la ou se localise rambla"){
+          localisation(BOT_NAME, BOT_IMG, "left", msgText);
+        }
+        else//ghir ktaba
+        appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+
+      });
+
+    }
+
+
+    // Utils
+    function get(selector, root = document) {
+      return root.querySelector(selector);
+    }
+
+    function formatDate(date) {
+      const h = "0" + date.getHours();
+      const m = "0" + date.getMinutes();
+
+      return `${h.slice(-2)}:${m.slice(-2)}`;
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>
